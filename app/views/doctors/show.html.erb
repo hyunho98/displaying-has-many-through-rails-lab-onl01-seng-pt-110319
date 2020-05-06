@@ -1,0 +1,8 @@
+<h1>Doctor <%= @doctor.name %></h1>
+
+<h3>Department: <%= @doctor.department %></h3>
+<h3><%= pluralize(@doctor.appointments.count, "Appointment") %></h3>
+
+<ul>
+  <% @doctor.appointments.each do |app| %>
+    <li><%= link_to app.patient.name + " " + app.appointment_datetime.strftime("%B %d, %Y at %i:%M")
