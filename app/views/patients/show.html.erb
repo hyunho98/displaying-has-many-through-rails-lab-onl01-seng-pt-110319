@@ -1,2 +1,8 @@
-<h1>Patients#show</h1>
-<p>Find me in app/views/patients/show.html.erb</p>
+<h1><%= @patient.name %></h1>
+
+<h3>There are <%= pluralize(@patient.appointments.count, 'Appointment') %></h3>
+<br>
+<%= @patient.appointments.each do |appointment| %>
+  <h3><%= appointment.appointment_datetime.strftime("%B %d, %Y at %k:%M") %></h3>
+  <h3>Doctor: <%= link_to appointment.doctor.name, doctor_path(appointment.doctor) %></h3>
+<% end %>
